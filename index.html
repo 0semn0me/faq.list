@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CQ MDU - Base de Conhecimento</title>
+
+<link rel="stylesheet" href="style.css">
+
+https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-container">
+
+        <div>
+            <h1>CQ MDU</h1>
+            <p>Base de Conhecimento Operacional</p>
+        </div>
+
+        <button id="openMenu" class="menu-button">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+<div id="overlay" class="overlay"></div>
+
+<aside id="sidebar">
+
+    <div class="sidebar-header">
+
+        <h2>Menu</h2>
+
+        <button id="closeMenu">
+            ✕
+        </button>
+
+    </div>
+
+    <button onclick="showPage('home')">🏠 Início</button>
+
+    <button onclick="showPage('convencional')">
+        🔧 Convencional
+    </button>
+
+    <button onclick="showPage('troncal')">
+        🧵 Troncal
+    </button>
+
+    <button onclick="showPage('arvore')">
+        🌳 Árvore de Decisões
+    </button>
+
+    <button onclick="showPage('socorro')">
+        🆘 Socorro Rápido
+    </button>
+
+    <hr>
+
+    <button onclick="showPage('dashboard')">
+        📊 Dashboard
+    </button>
+
+</aside>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="grid-home">
+
+        <div class="card" onclick="showPage('convencional')">
+
+            <div class="icon">🔧</div>
+
+            <h2>Convencional</h2>
+
+            <p>
+                Procedimentos e consultas do fluxo convencional.
+            </p>
+
+        </div>
+
+        <div class="card" onclick="showPage('troncal')">
+
+            <div class="icon">🧵</div>
+
+            <h2>Troncal</h2>
+
+            <p>
+                Fluxos de Nodes, Troncal e Unifilar.
+            </p>
+
+        </div>
+
+        <div class="card" onclick="showPage('arvore')">
+
+            <div class="icon">🌳</div>
+
+            <h2>Árvore de Decisões</h2>
+
+            <p>
+                Navegação guiada para identificar problemas.
+            </p>
+
+        </div>
+
+        <div class="card danger" onclick="showPage('socorro')">
+
+            <div class="icon">🆘</div>
+
+            <h2>Socorro Rápido</h2>
+
+            <p>
+                Acesso direto aos erros mais frequentes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONVENCIONAL -->
+
+<section id="convencional" class="page">
+
+    <div class="content">
+
+        <h1>🔧 Convencional</h1>
+
+        <div class="content-box">
+
+            <h3>Procedimento Exemplo</h3>
+
+            <p>
+                Substitua este texto pelos procedimentos reais do fluxo Convencional.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TRONCAL -->
+
+<section id="troncal" class="page">
+
+    <div class="content">
+
+        <h1>🧵 Troncal</h1>
+
+        <div class="content-box">
+
+            <h3>Procedimento Exemplo</h3>
+
+            <p>
+                Substitua este texto pelos procedimentos reais do fluxo Troncal.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ARVORE -->
+
+<section id="arvore" class="page">
+
+    <div class="content">
+
+        <h1>🌳 Árvore de Decisões</h1>
+
+        <div class="content-box">
+
+            <h3>Qual problema você encontrou?</h3>
+
+            <ul>
+                <li>ListaTerminais</li>
+                <li>Visium</li>
+                <li>Revisão</li>
+                <li>Hachuras</li>
+                <li>Nomenclaturas</li>
+                <li>Totais</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOCORRO -->
+
+<section id="socorro" class="page">
+
+    <div class="content">
+
+        <h1>🆘 Socorro Rápido</h1>
+
+        <div class="content-box">
+
+            <ul>
+
+                <li>Divergência de Splitter</li>
+
+                <li>TOTALDIV não bate</li>
+
+                <li>AV no Visium</li>
+
+                <li>Duplicidade</li>
+
+                <li>Revisão Divergente</li>
+
+                <li>Item não contém</li>
+
+                <li>Espaço invisível</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page">
+
+    <div class="content">
+
+        <h1>📊 Dashboard</h1>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>15</h3>
+                <p>Procedimentos</p>
+            </div>
+
+            <div class="stat">
+                <h3>10</h3>
+                <p>Erros</p>
+            </div>
+
+            <div class="stat">
+                <h3>18</h3>
+                <p>FAQs</p>
+            </div>
+
+            <div class="stat">
+                <h3>6</h3>
+                <p>Dicas</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="app.js"></script>
+
+</body>
+</html>
