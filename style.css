@@ -1,714 +1,127 @@
-/* =====================================================
-RESET
-===================================================== */
+/* =========================================================
+DADOS DEMONSTRATIVOS
+SUBSTITUA PELOS DADOS REAIS FUTURAMENTE
+========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+const convencional = [
+
+{
+    categoria: "Procedimento",
+    titulo: "Exemplo de Procedimento",
+    conteudo:
+    "Substitua este conteúdo pelos procedimentos reais do fluxo Convencional."
+},
+
+{
+    categoria: "FAQ",
+    titulo: "Quando rodar ListaTerminais?",
+    conteudo:
+    "Área reservada para perguntas frequentes."
 }
 
-html{
-    scroll-behavior:smooth;
+];
+
+const troncal = [
+
+{
+    categoria: "Procedimento",
+    titulo: "Fluxo Troncal",
+    conteudo:
+    "Área reservada para os procedimentos do fluxo Troncal."
+},
+
+{
+    categoria: "FAQ",
+    titulo: "Micronodes",
+    conteudo:
+    "Área reservada para documentação de micronodes."
 }
 
-body{
+];
 
-    font-family:'Inter',sans-serif;
+const arvore = [
 
-    background:#f4f6fa;
+{
+    categoria: "Fluxo",
+    titulo: "ListaTerminais",
+    conteudo:
+    "Fluxo de decisão referente à ListaTerminais."
+},
 
-    color:#111827;
-
-    min-height:100vh;
-
+{
+    categoria: "Fluxo",
+    titulo: "Revisões",
+    conteudo:
+    "Fluxo de decisão referente a análises de revisão."
 }
 
-/* =====================================================
-HEADER
-===================================================== */
+];
 
-.top-header{
+const socorro = [
 
-    position:sticky;
+{
+    categoria: "Erro",
+    titulo: "AV no Visium",
+    conteudo:
+    "Área preparada para solução rápida."
+},
 
-    top:0;
+{
+    categoria: "Erro",
+    titulo: "TOTALDIV não bate",
+    conteudo:
+    "Área preparada para solução rápida."
+},
 
-    z-index:1000;
-
-    background:#ffffff;
-
-    border-bottom:1px solid #e5e7eb;
-
-    backdrop-filter:blur(10px);
-
+{
+    categoria: "Erro",
+    titulo: "Divergência de Splitter",
+    conteudo:
+    "Área preparada para solução rápida."
 }
 
-.header-container{
+];
 
-    max-width:1400px;
+/* =========================================================
+MENU LATERAL
+========================================================= */
 
-    margin:auto;
+const sidebar =
+document.getElementById("sidebar");
 
-    padding:18px 24px;
+const overlay =
+document.getElementById("overlay");
 
-    display:flex;
+const menuButton =
+document.getElementById("menuButton");
 
-    align-items:center;
+const closeSidebar =
+document.getElementById("closeSidebar");
 
-    justify-content:space-between;
+menuButton.addEventListener("click", () => {
 
-}
+    sidebar.classList.add("open");
+    overlay.classList.add("show");
 
-.brand h1{
+});
 
-    font-size:1.6rem;
+closeSidebar.addEventListener("click", closeMenu);
 
-    font-weight:800;
+overlay.addEventListener("click", closeMenu);
 
-    color:#111827;
+function closeMenu(){
 
-}
-
-.brand p{
-
-    margin-top:3px;
-
-    font-size:.88rem;
-
-    color:#6b7280;
-
-}
-
-.menu-button{
-
-    border:none;
-
-    width:46px;
-
-    height:46px;
-
-    border-radius:12px;
-
-    background:#eef2ff;
-
-    cursor:pointer;
-
-    font-size:1.2rem;
-
-    transition:.20s;
-
-}
-
-.menu-button:hover{
-
-    background:#dbe4ff;
-
-}
-
-/* =====================================================
-SIDEBAR
-===================================================== */
-
-.sidebar{
-
-    position:fixed;
-
-    top:0;
-
-    right:-320px;
-
-    width:300px;
-
-    height:100vh;
-
-    background:#ffffff;
-
-    box-shadow:
-    -12px 0 30px rgba(0,0,0,.08);
-
-    z-index:2000;
-
-    transition:.30s ease;
-
-    padding:24px;
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
 
 }
 
-.sidebar.open{
-
-    right:0;
-
-}
-
-.sidebar-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:25px;
-
-}
-
-.sidebar-header h3{
-
-    font-size:1.1rem;
-
-}
-
-.sidebar-header button{
-
-    border:none;
-
-    background:none;
-
-    font-size:1.2rem;
-
-    cursor:pointer;
-
-}
-
-.sidebar-links{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-
-.side-link{
-
-    border:none;
-
-    cursor:pointer;
-
-    text-align:left;
-
-    padding:14px;
-
-    border-radius:12px;
-
-    background:#f8fafc;
-
-    font-size:.95rem;
-
-    transition:.2s;
-
-}
-
-.side-link:hover{
-
-    background:#eef2ff;
-
-}
-
-/* =====================================================
-OVERLAY
-===================================================== */
-
-.overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.35);
-
-    z-index:1500;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.25s;
-
-}
-
-.overlay.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-/* =====================================================
-TABS FIXAS
-===================================================== */
-
-.main-tabs{
-
-    position:sticky;
-
-    top:83px;
-
-    z-index:900;
-
-    display:flex;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-    padding:16px 24px;
-
-    background:#ffffff;
-
-    border-bottom:1px solid #e5e7eb;
-
-}
-
-.tab-button{
-
-    border:none;
-
-    cursor:pointer;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    background:#f3f4f6;
-
-    color:#374151;
-
-    font-weight:700;
-
-    transition:.20s;
-
-}
-
-.tab-button:hover{
-
-    background:#e5e7eb;
-
-}
-
-.tab-button.active{
-
-    background:#1a56db;
-
-    color:white;
-
-}
-
-/* =====================================================
-BUSCA
-===================================================== */
-
-.search-section{
-
-    max-width:1400px;
-
-    margin:24px auto 10px;
-
-    padding:0 24px;
-
-}
-
-#searchInput{
-
-    width:100%;
-
-    padding:15px 18px;
-
-    border:1px solid #d1d5db;
-
-    border-radius:14px;
-
-    background:#ffffff;
-
-    outline:none;
-
-    font-size:.95rem;
-
-    transition:.2s;
-
-}
-
-#searchInput:focus{
-
-    border-color:#1a56db;
-
-    box-shadow:
-    0 0 0 4px
-    rgba(26,86,219,.12);
-
-}
-
-/* =====================================================
-FILTROS
-===================================================== */
-
-.filters{
-
-    max-width:1400px;
-
-    margin:auto;
-
-    padding:0 24px 24px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-}
-
-.filter-button{
-
-    border:none;
-
-    cursor:pointer;
-
-    padding:10px 15px;
-
-    border-radius:12px;
-
-    background:#f3f4f6;
-
-    font-weight:600;
-
-    transition:.20s;
-
-}
-
-.filter-button:hover{
-
-    background:#e5e7eb;
-
-}
-
-.filter-button.active{
-
-    background:#1a56db;
-
-    color:white;
-
-}
-
-/* =====================================================
-MAIN
-===================================================== */
-
-main{
-
-    max-width:1400px;
-
-    margin:auto;
-
-    padding:0 24px 60px;
-
-}
-
-/* =====================================================
-PAGES
-===================================================== */
-
-.page{
-
-    display:none;
-
-    animation:fade .25s ease;
-
-}
-
-.page.active{
-
-    display:block;
-
-}
-
-@keyframes fade{
-
-    from{
-        opacity:0;
-        transform:translateY(4px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-/* =====================================================
-PAGE HEADER
-===================================================== */
-
-.page-header{
-
-    margin-bottom:24px;
-
-}
-
-.page-header h2{
-
-    font-size:1.5rem;
-
-    margin-bottom:8px;
-
-}
-
-.page-header p{
-
-    color:#6b7280;
-
-}
-
-/* =====================================================
-ACCORDIONS
-===================================================== */
-
-.accordion-wrapper{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
-
-.accordion{
-
-    background:#ffffff;
-
-    border:1px solid #e5e7eb;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    transition:.20s;
-
-    box-shadow:
-    0 4px 20px rgba(0,0,0,.03);
-
-}
-
-.accordion:hover{
-
-    box-shadow:
-    0 8px 30px rgba(0,0,0,.06);
-
-}
-
-.accordion-header{
-
-    padding:18px 22px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    cursor:pointer;
-
-}
-
-.accordion-left{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-.badge{
-
-    display:inline-flex;
-
-    width:max-content;
-
-    padding:4px 10px;
-
-    border-radius:999px;
-
-    background:#e0e7ff;
-
-    color:#1e40af;
-
-    font-size:.75rem;
-
-    font-weight:700;
-
-}
-
-.accordion-title{
-
-    font-size:1rem;
-
-    font-weight:700;
-
-}
-
-.arrow{
-
-    font-size:.9rem;
-
-    color:#6b7280;
-
-    transition:.25s;
-
-}
-
-.accordion.open .arrow{
-
-    transform:rotate(180deg);
-
-}
-
-.accordion-body{
-
-    display:none;
-
-    padding:22px;
-
-    border-top:1px solid #e5e7eb;
-
-    line-height:1.7;
-
-    color:#374151;
-
-}
-
-.accordion.open .accordion-body{
-
-    display:block;
-
-}
-
-/* =====================================================
-RESULTADO VAZIO
-===================================================== */
-
-.empty-state{
-
-    display:none;
-
-    text-align:center;
-
-    padding:40px;
-
-    background:white;
-
-    border-radius:18px;
-
-    border:1px solid #e5e7eb;
-
-}
-
-.empty-state.show{
-
-    display:block;
-
-}
-
-.empty-state h3{
-
-    margin-bottom:8px;
-
-}
-
-.empty-state p{
-
-    color:#6b7280;
-
-}
-
-/* =====================================================
-SCROLLBAR
-===================================================== */
-
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:#eef2f7;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#cbd5e1;
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:#94a3b8;
-
-}
-
-/* =====================================================
-RESPONSIVO
-===================================================== */
-
-@media(max-width:768px){
-
-    .header-container{
-
-        padding:16px;
-
-    }
-
-    .brand h1{
-
-        font-size:1.3rem;
-
-    }
-
-    .sidebar{
-
-        width:280px;
-
-    }
-
-    .main-tabs{
-
-        top:77px;
-
-        padding:12px 16px;
-
-        overflow-x:auto;
-
-        flex-wrap:nowrap;
-
-    }
-
-    .search-section{
-
-        padding:0 16px;
-
-    }
-
-    .filters{
-
-        padding:0 16px 20px;
-
-    }
-
-    main{
-
-        padding:0 16px 40px;
-
-    }
-
-}
+/* =========================================================
+CONTROLE DE ABAS
+========================================================= */
+
+const pages =
+document.querySelectorAll(".page");
+
+const tabs =
+document.
