@@ -1,27 +1,22 @@
-/* =======================
-CONFIGURAÇÃO
-======================= */
-
-const ADMIN_PASSWORD = "cqmdu2026";
-
-let editMode = false;
-
-/* =======================
-CONTEÚDO
-======================= */
+/* =====================================================
+DADOS DEMONSTRATIVOS
+SUBSTITUIR PELOS CONTEÚDOS REAIS DEPOIS
+===================================================== */
 
 const convencional = [
 
 {
-id:"conv1",
-titulo:"Procedimento Exemplo",
-conteudo:"Substitua este conteúdo pelo procedimento real."
+categoria:"Procedimento",
+titulo:"Exemplo de Procedimento",
+conteudo:
+"Substitua este conteúdo pelos procedimentos reais do FAQ Convencional."
 },
 
 {
-id:"conv2",
-titulo:"Divergência de Splitter",
-conteudo:"Conteúdo futuro."
+categoria:"FAQ",
+titulo:"Quando rodar ListaTerminais?",
+conteudo:
+"Área preparada para a FAQ real."
 }
 
 ];
@@ -29,25 +24,10 @@ conteudo:"Conteúdo futuro."
 const troncal = [
 
 {
-id:"tro1",
+categoria:"Procedimento",
 titulo:"Fluxo Troncal",
-conteudo:"Conteúdo futuro."
-}
-
-];
-
-const socorro = [
-
-{
-id:"soc1",
-titulo:"AV no Visium",
-conteudo:"Procedimento de análise."
-},
-
-{
-id:"soc2",
-titulo:"TOTALDIV não bate",
-conteudo:"Procedimento de análise."
+conteudo:
+"Área preparada para os processos Troncal."
 }
 
 ];
@@ -55,102 +35,42 @@ conteudo:"Procedimento de análise."
 const arvore = [
 
 {
-id:"tree1",
+categoria:"Fluxo",
 titulo:"ListaTerminais",
-conteudo:"Fluxo de decisão para ListaTerminais."
+conteudo:
+"Usuário seleciona o tipo de erro e a árvore direciona para o procedimento correto."
 },
 
 {
-id:"tree2",
+categoria:"Fluxo",
 titulo:"Revisões",
-conteudo:"Fluxo de decisão para Revisões."
+conteudo:
+"Área preparada para árvore de decisão de revisão."
 }
 
 ];
 
-/* =======================
-MENUS
-======================= */
+const socorro = [
 
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+{
+categoria:"Erro",
+titulo:"AV no Visium",
+conteudo:
+"Área preparada para o conteúdo real."
+},
 
-document
-.getElementById("openMenu")
-.addEventListener("click",()=>{
-
-sidebar.classList.add("open");
-overlay.classList.add("show");
-
-});
-
-document
-.getElementById("closeMenu")
-.addEventListener("click",closeMenu);
-
-overlay.addEventListener("click",closeMenu);
-
-function closeMenu(){
-
-sidebar.classList.remove("open");
-overlay.classList.remove("show");
-
+{
+categoria:"Erro",
+titulo:"TOTALDIV não bate",
+conteudo:
+"Área preparada para o conteúdo real."
 }
 
-/* =======================
-SPA
-======================= */
+];
 
-function showPage(id){
-
-document
-.querySelectorAll(".page")
-.forEach(page=>page.classList.remove("active"));
-
-document
-.getElementById(id)
-.classList.add("active");
-
-closeMenu();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-/* =======================
-ADMIN
-======================= */
-
-document
-.getElementById("adminButton")
-.addEventListener("click",()=>{
-
-const password =
-prompt("Digite a senha:");
-
-if(password===ADMIN_PASSWORD){
-
-editMode = true;
-
-document.body.classList.add("edit-enabled");
-
-alert("Modo edição ativado.");
-
-}
-else{
-
-alert("Senha incorreta.");
-
-}
-
-});
-
-/* =======================
+/* =====================================================
 RENDER
-======================= */
+===================================================== */
 
 function createAccordion(item){
 
@@ -160,34 +80,27 @@ return `
 
 <div class="accordion-header">
 
-<span>${item.titulo}</span>
+<div>
 
-<span class="arrow">▼</span>
+<div class="badge">
+${item.categoria}
+</div>
+
+<div>
+${item.titulo}
+</div>
+
+</div>
+
+<div class="arrow">
+▼
+</div>
 
 </div>
 
 <div class="accordion-body">
 
-<div class="view-mode">
-
 ${item.conteudo}
-
-</div>
-
-<div class="edit-mode">
-
-<input
-class="edit-input"
-value="${item.titulo}"
->
-
-<textarea class="edit-textarea">${item.conteudo}</textarea>
-
-<button class="save-btn">
-Salvar
-</button>
-
-</div>
 
 </div>
 
@@ -200,28 +113,32 @@ Salvar
 function render(){
 
 document
-.getElementById("convContainer")
+.getElementById("conv-container")
 .innerHTML =
 convencional.map(createAccordion).join("");
 
 document
-.getElementById("tronContainer")
+.getElementById("tron-container")
 .innerHTML =
 troncal.map(createAccordion).join("");
 
 document
-.getElementById("socContainer")
-.innerHTML =
-socorro.map(createAccordion).join("");
-
-document
-.getElementById("treeContainer")
+.getElementById("arvore-container")
 .innerHTML =
 arvore.map(createAccordion).join("");
+
+document
+.getElementById("socorro-container")
+.innerHTML =
+socorro.map(createAccordion).join("");
 
 bindAccordions();
 
 }
+
+/* =====================================================
+ACCORDIONS
+===================================================== */
 
 function bindAccordions(){
 
@@ -241,5 +158,83 @@ header
 });
 
 }
+
+/* =====================================================
+ABAS COM HASH
+===================================================== */
+
+const tabs =
+document.querySelectorAll(".main-tab");
+
+const pages =
+document.querySelectorAll(".page");
+
+function activateTab(page){
+
+pages.forEach(el=>
+el.classList.remove("active")
+);
+
+tabs.forEach(el=>
+el.classList.remove("active")
+);
+
+document
+.getElementById(page)
+?.classList
+.add("active");
+
+document
+.querySelector(
+`[data-page="${page}"]`
+)
+?.classList
+.add("active");
+
+}
+
+tabs.forEach(tab=>{
+
+tab.addEventListener("click",()=>{
+
+const page =
+tab.dataset.page;
+
+activateTab(page);
+
+location.hash =
+page;
+
+});
+
+});
+
+window.addEventListener("load",()=>{
+
+const page =
+location.hash
+.replace("#","")
+||
+"convencional";
+
+activateTab(page);
+
+});
+
+window.addEventListener("hashchange",()=>{
+
+const page =
+location.hash
+.replace("#","")
+||
+"convencional";
+
+activateTab(page);
+
+});
+
+/* =====================================================
+INICIALIZAÇÃO
+===================================================== */
 
 render();
