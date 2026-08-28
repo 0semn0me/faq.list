@@ -1,62 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CQ MDU - Base de Conhecimento</title>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+CQ MDU - Base de Conhecimento
+</title>
 
 https://fonts.googleapis.com
+
 https://fonts.gstatic.com
 
 https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap
 
-<link rel="stylesheet" href="style.css">
+<link
+rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
-<header>
+<header class="top-header">
 
     <div class="header-container">
 
         <div class="brand">
 
-            <h1>CQ MDU</h1>
-            <p>Base de Conhecimento Operacional</p>
+            <h1>
+                CQ MDU
+            </h1>
+
+            <p>
+                Base de Conhecimento Operacional
+            </p>
 
         </div>
+
+        <button
+            id="menuButton"
+            class="menu-button">
+
+            ☰
+
+        </button>
 
     </div>
 
 </header>
 
+<!-- MENU -->
+
+<div
+id="overlay"
+class="overlay">
+
+</div>
+
+<aside
+id="sidebar"
+class="sidebar">
+
+    <div class="sidebar-header">
+
+        <h3>
+            Menu
+        </h3>
+
+        <button
+            id="closeSidebar">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="sidebar-links">
+
+        <button class="side-link">
+            📋 Checklist Convencional
+        </button>
+
+        <button class="side-link">
+            📋 Checklist Troncal
+        </button>
+
+        <button class="side-link">
+            📚 Procedimentos
+        </button>
+
+        <button class="side-link">
+            ❓ FAQ
+        </button>
+
+        <button class="side-link">
+            💡 Dicas
+        </button>
+
+        <button class="side-link">
+            🧵 Nomenclaturas
+        </button>
+
+        <button class="side-link">
+            📊 Dashboard
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- ABAS FIXAS -->
+
 <nav class="main-tabs">
 
-    <button class="main-tab active"
+    <button
+        class="tab-button active"
         data-page="convencional">
 
         🔧 Convencional
 
     </button>
 
-    <button class="main-tab"
+    <button
+        class="tab-button"
         data-page="troncal">
 
         🧵 Troncal
 
     </button>
 
-    <button class="main-tab"
+    <button
+        class="tab-button"
         data-page="arvore">
 
         🌳 Árvore
 
     </button>
 
-    <button class="main-tab"
+    <button
+        class="tab-button"
         data-page="socorro">
 
         🆘 Socorro
@@ -65,45 +154,175 @@ https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=
 
 </nav>
 
+<!-- BUSCA -->
+
+<section class="search-section">
+
+    <input
+
+        type="text"
+
+        id="searchInput"
+
+        placeholder="
+Buscar procedimento,
+erro, termo ou palavra-chave...
+">
+
+</section>
+
+<!-- FILTROS -->
+
+<section class="filters">
+
+    <button
+        class="filter-button active"
+        data-filter="Todos">
+
+        Todos
+
+    </button>
+
+    <button
+        class="filter-button"
+        data-filter="Procedimento">
+
+        Procedimentos
+
+    </button>
+
+    <button
+        class="filter-button"
+        data-filter="FAQ">
+
+        FAQ
+
+    </button>
+
+    <button
+        class="filter-button"
+        data-filter="Erro">
+
+        Erros
+
+    </button>
+
+    <button
+        class="filter-button"
+        data-filter="Fluxo">
+
+        Fluxos
+
+    </button>
+
+</section>
+
 <main>
+
+<!-- CONVENCIONAL -->
 
 <section
 id="convencional"
 class="page active">
 
-<h2>🔧 Convencional</h2>
+    <div class="page-header">
 
-<div id="conv-container"></div>
+        <h2>
+            🔧 Convencional
+        </h2>
+
+        <p>
+            Procedimentos e conteúdos
+            relacionados ao fluxo convencional.
+        </p>
+
+    </div>
+
+    <div
+        id="conv-container"
+        class="accordion-wrapper">
+
+    </div>
 
 </section>
+
+<!-- TRONCAL -->
 
 <section
 id="troncal"
 class="page">
 
-<h2>🧵 Troncal</h2>
+    <div class="page-header">
 
-<div id="tron-container"></div>
+        <h2>
+            🧵 Troncal
+        </h2>
+
+        <p>
+            Procedimentos e conteúdos
+            relacionados ao fluxo troncal.
+        </p>
+
+    </div>
+
+    <div
+        id="tron-container"
+        class="accordion-wrapper">
+
+    </div>
 
 </section>
+
+<!-- ARVORE -->
 
 <section
 id="arvore"
 class="page">
 
-<h2>🌳 Árvore de Decisões</h2>
+    <div class="page-header">
 
-<div id="arvore-container"></div>
+        <h2>
+            🌳 Árvore de Decisões
+        </h2>
+
+        <p>
+            Fluxos guiados para análise
+            e tratamento de problemas.
+        </p>
+
+    </div>
+
+    <div
+        id="arvore-container"
+        class="accordion-wrapper">
+
+    </div>
 
 </section>
+
+<!-- SOCORRO -->
 
 <section
 id="socorro"
 class="page">
 
-<h2>🆘 Socorro Rápido</h2>
+    <div class="page-header">
 
-<div id="socorro-container"></div>
+        <h2>
+            🆘 Socorro Rápido
+        </h2>
+
+        <p>
+            Erros frequentes e acessos rápidos.
+        </p>
+
+    </div>
+
+    <div
+        id="socorro-container"
+        class="accordion-wrapper">
+
+    </div>
 
 </section>
 
@@ -112,4 +331,5 @@ class="page">
 <script src="app.js"></script>
 
 </body>
+
 </html>
